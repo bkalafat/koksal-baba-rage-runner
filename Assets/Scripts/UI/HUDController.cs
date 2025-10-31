@@ -1,6 +1,6 @@
-using UnityEngine;
+using UnityEngine.UI;
 
-namespace RageRunner.UI
+namespace KoksalBaba.UI
 {
     /// <summary>
     /// Manages HUD elements (score display, rage bar, pause button).

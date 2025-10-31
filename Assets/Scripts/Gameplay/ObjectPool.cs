@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace RageRunner.Gameplay
+namespace KoksalBaba.Gameplay
 {
     /// <summary>
     /// Generic object pool for reusing GameObjects (obstacles, pickups, audio sources).

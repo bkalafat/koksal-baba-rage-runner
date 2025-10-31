@@ -1,6 +1,6 @@
 using System;
 
-namespace RageRunner.Services
+namespace KoksalBaba.Services
 {
     /// <summary>
     /// Interface for in-app purchases (Remove Ads, Starter Pack).

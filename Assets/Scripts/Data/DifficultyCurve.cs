@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace RageRunner.Data
+namespace KoksalBaba.Data
 {
     /// <summary>
     /// ScriptableObject defining difficulty progression over time.

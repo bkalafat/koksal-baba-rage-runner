@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-namespace RageRunner.Gameplay
+namespace KoksalBaba.Gameplay
 {
     /// <summary>
     /// Manages rage meter fill, decay, and dash activation.

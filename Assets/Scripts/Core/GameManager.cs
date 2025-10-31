@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-namespace RageRunner.Core
+namespace KoksalBaba.Core
 {
     /// <summary>
     /// Persistent singleton managing game state and scene transitions.

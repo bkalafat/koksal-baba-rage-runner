@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace RageRunner.Gameplay
+namespace KoksalBaba.Gameplay
 {
     /// <summary>
     /// Controls player movement, collision detection, and dash state.

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace RageRunner.Services
+namespace KoksalBaba.Services
 {
     /// <summary>
     /// Interface for analytics event logging (Firebase, Unity Analytics).

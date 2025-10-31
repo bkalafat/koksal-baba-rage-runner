@@ -1,7 +1,7 @@
 using UnityEngine;
-using RageRunner.Data;
+using KoksalBaba.Data;
 
-namespace RageRunner.Gameplay
+namespace KoksalBaba.Gameplay
 {
     /// <summary>
     /// Spawns obstacles and pickups with weighted random selection and difficulty curve.

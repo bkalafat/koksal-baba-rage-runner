@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace RageRunner.Data
+namespace KoksalBaba.Data
 {
     /// <summary>
     /// ScriptableObject defining biome theme (background, palette, music).

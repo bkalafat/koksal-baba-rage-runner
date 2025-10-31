@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-namespace RageRunner.Data
+namespace KoksalBaba.Data
 {
     /// <summary>
     /// ScriptableObject defining obstacle spawn weights and gap constraints.

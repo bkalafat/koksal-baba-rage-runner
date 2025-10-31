@@ -1,6 +1,6 @@
 using System;
 
-namespace RageRunner.Services
+namespace KoksalBaba.Services
 {
     /// <summary>
     /// Interface for ad network operations (interstitial, rewarded video).

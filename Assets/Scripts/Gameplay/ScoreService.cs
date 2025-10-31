@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-namespace RageRunner.Gameplay
+namespace KoksalBaba.Gameplay
 {
     /// <summary>
     /// Tracks distance-based score, pickup bonuses, and chain multipliers.
