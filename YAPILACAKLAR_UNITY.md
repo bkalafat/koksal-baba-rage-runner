@@ -12,11 +12,13 @@
 
 1. **Unity Hub**'ı aç
 2. **"Add"** → Klasörü seç: `C:\dev\koksal`
-3. Unity versiyonu: **2022.3 LTS** veya **2023.3 LTS** (yoksa indir)
+3. Unity versiyonu: **Unity 6 (6000.0.x)** veya **2022.3/2023.3 LTS** (yoksa indir)
+   - Unity 6 tercih edilir (en yeni 2D özellikler)
 4. Projeye tıkla, Unity Editor açılsın
 5. İlk import bekle (~2-3 dakika)
+6. **İlk açılışta**: "Enter Safe Mode" uyarısı çıkarsa **"Ignore"** tıkla (normal bir durumdur)
 
-✓ **Başarı**: Unity Editor hatasız açılır
+✓ **Başarı**: Unity Editor hatasız açılır, Console'da kırmızı hata yok
 
 ---
 
@@ -57,38 +59,61 @@
 
 ---
 
-### ☐ 4. MainMenu Scene Oluştur (5 dakika)
+### ☐ 4. MainMenu Scene Oluştur (10 dakika)
 
-1. **File → New Scene**
+1. **File → New Scene** → **2D (Built-in)** template seç
 2. **GameObject → UI → Canvas**
-3. Canvas seç → **Add Component** → `"MainMenuController"` ekle
-4. Canvas'a sağ tık → **UI → Button - TextMeshPro** → İsim: `"PlayButton"`
-   - TextMeshPro import penceresi çıkarsa **"Import TMP Essentials"**
-5. PlayButton seç → Text'i değiştir: `"OYNA"`
-6. PlayButton → Button component → **OnClick()** → **"+"**
-   - Canvas'ı sürükle
-   - Fonksiyon: `MainMenuController → OnPlayClicked()`
-7. **File → Save As** → `Assets/Scenes/MainMenu.unity`
+3. Canvas seç:
+   - **Canvas Scaler** component'e tıkla
+   - UI Scale Mode: `Scale With Screen Size`
+   - Reference Resolution: X = `1080`, Y = `1920` (iPhone portrait)
+   - Match: `0.5` (genişlik ve yükseklik arası denge)
+4. Canvas seç → **Add Component** → `"MainMenuController"` ara → ekle
+5. Canvas'a sağ tık → **UI → Button - TextMeshPro** → İsim: `"PlayButton"`
+   - **İlk TMP kullanımı**: "Import TMP Essentials" penceresi çıkar → **"Import TMP Essentials"** tıkla
+6. PlayButton seç:
+   - Pozisyon: Center (Anchor Presets'ten ortada seç)
+   - Text (child object) seç → Text: `"OYNA"`
+   - Font Size: `48`
+7. PlayButton seç → Inspector'da **Button** component → **OnClick()** → **"+"**
+   - Canvas'ı Hierarchy'den sürükle
+   - Dropdown: `MainMenuController → OnPlayClicked()`
+8. **File → Save As** → `Assets/Scenes/MainMenu.unity`
 
-✓ **Başarı**: MainMenu.unity oluşturuldu
+✓ **Başarı**: MainMenu.unity oluşturuldu, OYNA butonu ortada
 
 ---
 
-### ☐ 5. Game ve Results Scene (5 dakika)
+### ☐ 5. Game ve Results Scene (10 dakika)
 
 #### Game Scene
-1. **File → New Scene**
-2. Varsayılan Camera'yı tut
+1. **File → New Scene** → **2D (Built-in)** template
+2. Main Camera seç:
+   - **Camera** component → Projection: `Orthographic` (zaten seçili olmalı)
+   - Size: `5` (2D kamera zoom seviyesi)
+   - Background: Açık mavi (gökyüzü rengi)
 3. **File → Save As** → `Assets/Scenes/Game.unity`
 
 #### Results Scene
-1. **File → New Scene**
-2. **GameObject → UI → Canvas**
-3. Canvas'a sağ tık → **UI → Button - TextMeshPro** → İsim: `"ReplayButton"`
-4. Button text: `"TEKRAR OYNA"`
-5. **File → Save As** → `Assets/Scenes/Results.unity`
+1. **File → New Scene** → **2D (Built-in)** template
+2. Main Camera'yı sil (UI için gerekmiyor)
+3. **GameObject → UI → Canvas**
+4. Canvas seç → Canvas Scaler:
+   - UI Scale Mode: `Scale With Screen Size`
+   - Reference Resolution: `1080 x 1920`
+5. Canvas'a **Add Component** → `ResultsController` ekle
+6. Canvas'a sağ tık → **UI → Button - TextMeshPro** → İsim: `"ReplayButton"`
+   - Pozisyon: Alt ortada
+   - Text (child): `"TEKRAR OYNA"`
+   - Font Size: `36`
+7. Canvas'a sağ tık → **UI → Text - TextMeshPro** → İsim: `"ScoreText"`
+   - Pozisyon: Ortada
+   - Text: `"0"`
+   - Font Size: `72`
+   - Alignment: Center
+8. **File → Save As** → `Assets/Scenes/Results.unity`
 
-✓ **Başarı**: 4 scene hazır
+✓ **Başarı**: 4 scene hazır (Bootstrap, MainMenu, Game, Results)
 
 ---
 
@@ -189,24 +214,35 @@ Kaydet, Unity'de derleme bekle.
 
 ## 🎯 İKİNCİ AŞAMA - Oyuncu ve Hareket (1 saat)
 
-### ☐ 10. Oyuncu Prefab Oluştur (15 dakika)
+### ☐ 10. Oyuncu Prefab Oluştur (20 dakika)
 
 1. Game scene'i aç
-2. **GameObject → 2D Object → Sprites → Square**
+2. **GameObject → 2D Object → Sprites → Square** (Unity 6: GameObject → 2D Object → Sprite → Square)
 3. İsim: `"Player"`
-4. Player seç:
+4. Player seç → Inspector'da:
+   - **Transform**:
+     - Position: X = `0`, Y = `0`, Z = `0`
+     - Scale: X = `1`, Y = `2`, Z = `1` (dikdörtgen şekil için)
+   - **Sprite Renderer**:
+     - Color: **Kırmızı** (R=255, G=0, B=0)
+     - Sorting Layer: Yeni layer oluştur: **"Player"**, Order in Layer: `10` (en üstte görünür)
+5. Player'a component ekle:
    - **Add Component** → `Rigidbody2D`
+     - Body Type: `Dynamic`
      - Gravity Scale: `2.5`
+     - Collision Detection: `Continuous` (daha hassas çarpışma)
+     - Constraints → Freeze Rotation: **Z** işaretle (takla atmasın)
    - **Add Component** → `Box Collider 2D`
      - **Is Trigger**: ✓ (işaretle)
+     - Size: Otomatik ayarlanır, kontrol et
    - **Add Component** → `PlayerController` ara ve ekle
    - **Add Component** → `RageMeter` ara ve ekle
-5. Pozisyon: X = `0`, Y = `0`, Z = `0`
-6. Renk: Player seç → Inspector → Sprite Renderer → Color → **Kırmızı**
-7. Player'ı Hierarchy'den `Assets/` klasörüne sürükle (prefab oluşturur)
-8. Scene kaydet
+6. Player'ı Hierarchy'den **Project → Assets/** klasörüne sürükle
+   - Prefab oluşturuldu mesajı görünecek
+7. Scene'den Player'ı **SİLME** (test için lazım)
+8. **File → Save Scene** (Ctrl+S)
 
-✓ **Başarı**: Assets/'da Player prefab var
+✓ **Başarı**: Assets/'da Player.prefab var, Hierarchy'de Player var
 
 ---
 
@@ -290,35 +326,67 @@ Kaydet, Unity'de derleme bekle.
 
 ## 🎨 ÜÇÜNCÜ AŞAMA - HUD ve Spawner (1 saat)
 
-### ☐ 16. HUD Canvas Oluştur (20 dakika)
+### ☐ 16. HUD Canvas Oluştur (25 dakika)
 
 1. Game scene'i aç
-2. **GameObject → UI → Canvas**
-3. Canvas seç:
-   - Render Mode: `Screen Space - Overlay`
-   - Canvas Scaler → UI Scale Mode: `Scale With Screen Size`
-   - Reference Resolution: X = `1080`, Y = `1920`
-4. **Add Component** → `HUDController` ekle
-5. Canvas'a sağ tık → **UI → Text - TextMeshPro** → İsim: `"ScoreText"`
-   - Pozisyon: Sol üst köşe
-   - Text: `"0"`
+2. **GameObject → UI → Canvas** → İsim: `"HUD Canvas"`
+3. HUD Canvas seç:
+   - **Canvas** component:
+     - Render Mode: `Screen Space - Overlay`
+   - **Canvas Scaler** component:
+     - UI Scale Mode: `Scale With Screen Size`
+     - Reference Resolution: X = `1080`, Y = `1920`
+     - Match: `0.5`
+4. HUD Canvas seç → **Add Component** → `HUDController` ekle
+
+#### Skor Text Oluştur
+5. HUD Canvas'a sağ tık → **UI → Text - TextMeshPro** → İsim: `"ScoreText"`
+   - **Rect Transform**:
+     - Anchor Presets: Sol üst köşe (Alt tuşuna basılı tut, shift+alt ile pozisyon+pivot ayarla)
+     - Pos X: `100`, Pos Y: `-100`
+   - **TextMeshPro**:
+     - Text: `"0"`
+     - Font Size: `64`
+     - Color: Beyaz
+     - Alignment: Sol üst
+
+#### Öfke Barı Oluştur
+6. HUD Canvas'a sağ tık → **UI → Image** → İsim: `"RageBarBackground"`
+   - Anchor: Alt ortada
+   - Pos X: `0`, Pos Y: `150`, Width: `600`, Height: `40`
+   - Color: Koyu gri (arka plan)
+7. RageBarBackground'a sağ tık → **UI → Image** → İsim: `"RageBarFill"`
+   - **Rect Transform**:
+     - Anchor: Sol alt köşe (stretch left)
+     - Left: `0`, Right: `0`, Top: `0`, Bottom: `0`
+   - **Image** component:
+     - Image Type: `Filled`
+     - Fill Method: `Horizontal`
+     - Fill Origin: `Left`
+     - Fill Amount: `0.5` (test için yarım dolu)
+     - Color: Kırmızı
+
+#### Duraklat Butonu
+8. HUD Canvas'a sağ tık → **UI → Button - TextMeshPro** → İsim: `"PauseButton"`
+   - Anchor: Sağ üst köşe
+   - Pos X: `-100`, Pos Y: `-100`
+   - Width: `100`, Height: `100`
+   - Text (child): `"II"`
    - Font Size: `48`
-6. Canvas'a sağ tık → **UI → Image** → İsim: `"RageBarFill"`
-   - Pozisyon: Alt ortada
-   - Renk: Kırmızı
-7. Canvas'a sağ tık → **UI → Button** → İsim: `"PauseButton"`
-   - Pozisyon: Sağ üst köşe
-   - Text: `"II"` (duraklat simgesi)
 
-#### HUDController Bağlantılarını Yap
-8. Canvas seç → Inspector'da HUDController component:
-   - **Score Text**: ScoreText'i sürükle
+#### HUDController Bağlantıları
+9. HUD Canvas seç → Inspector'da **HUDController** component:
+   - **Score Text**: ScoreText'i Hierarchy'den sürükle
    - **Rage Bar Fill**: RageBarFill'i sürükle
+   - **Rage Ready Prompt**: (şimdilik boş bırak, sonra ekleriz)
    - **Pause Button**: PauseButton'u sürükle
+10. PauseButton seç → **Button** component → **OnClick()** → **"+"**
+    - HUD Canvas'ı sürükle
+    - Fonksiyon: `HUDController → OnPauseButtonClicked()`
 
-9. Scene kaydet
+11. **File → Save Scene**
 
-✓ **Başarı**: HUD görünüyor, skor 0 gösteriyor
+✓ **Başarı**: HUD tam ekranda, skor sol üstte "0", öfke barı altta kırmızı, duraklat butonu sağ üstte
 
 ---
 
@@ -410,30 +478,72 @@ Bu adımları tamamladıysan, **OYNANILIR BİR PROTOTİP**'in var! 🎉
 
 ## ⏱️ TOPLAM SÜRE
 
-- ☐ Adım 1-9 (Hızlı Başlangıç): **~45 dakika**
-- ☐ Adım 10-15 (Oyuncu ve Hareket): **~60 dakika**
-- ☐ Adım 16-19 (HUD ve Spawner): **~50 dakika**
+- ☐ Adım 1-9 (Hızlı Başlangıç): **~60 dakika**
+- ☐ Adım 10-15 (Oyuncu ve Hareket): **~75 dakika**
+- ☐ Adım 16-19 (HUD ve Spawner): **~60 dakika**
 
-**Toplam**: ~2.5 saat ile **oynanabilir oyun**!
+**Toplam**: ~3-3.5 saat ile **oynanabilir MVP oyun**!
+
+**Not**: Unity 6 kullanıyorsan bazı adımlar daha hızlı olabilir (iyileştirilmiş UI araçları)
 
 ---
 
 ## 🆘 Sık Karşılaşılan Sorunlar
 
-1. **"GameManager script bulunamadı"**
-   → Unity derlemeyi bitirsin (sağ alt köşe progress bar)
+### 1. "GameManager script bulunamadı" / Kırmızı hatalar
+**Çözüm**: Unity derlemeyi bitirsin (sağ alt köşe progress bar). 30-60 saniye bekle.
 
-2. **"Namespace bulunamadı"**
-   → RageRunner.* → KoksalBaba.* değişimi yaptın mı? (Adım 7)
+### 2. "Namespace 'RageRunner' could not be found"
+**Çözüm**: Adım 7'de namespace değişimini yaptın mı? RageRunner.* → KoksalBaba.*
+- Visual Studio'da 6 dosyayı değiştir, kaydet
+- Unity'ye dön, otomatik derlenecek
 
-3. **Player hareket etmiyor**
-   → Rigidbody2D ekli mi? Gravity Scale = 2.5 mi?
+### 3. Player hareket etmiyor / düşmüyor
+**Kontroller**:
+- ✓ Rigidbody2D ekli mi? (Inspector'da görmeli)
+- ✓ Gravity Scale = 2.5 mi?
+- ✓ Body Type: `Dynamic` mi?
+- ✓ Constraints → Freeze Rotation Z işaretli mi?
 
-4. **Buton çalışmıyor**
-   → OnClick() event MainMenuController.OnPlayClicked()'a bağlı mı?
+### 4. "Input.GetMouseButtonDown not found" hatası
+**Unity 6 için**: Eski Input System hala çalışıyor, sorun yok. Eğer hata alırsan:
+- **Edit → Project Settings → Player → Other Settings**
+- Active Input Handling: `Both` (veya `Input Manager (Old)`)
 
-5. **Engeller spawn olmuyor**
-   → DifficultyCurve asset Spawner'a sürüklenmiş mi?
+### 5. Buton çalışmıyor
+**Kontroller**:
+- ✓ Button component → OnClick() → "+" ile event eklendi mi?
+- ✓ Doğru GameObject (Canvas) sürüklendi mi?
+- ✓ Doğru fonksiyon seçildi mi? (ör: MainMenuController.OnPlayClicked())
+- ✓ Script derlenmiş mi? (Console'da kırmızı hata yok)
+
+### 6. Engeller spawn olmuyor
+**Kontroller**:
+- ✓ DifficultyCurve asset Spawner'a sürüklenmiş mi?
+- ✓ Spawner'da Obstacle Prefabs size > 0 mı?
+- ✓ StaticPole prefab sürüklenmiş mi?
+
+### 7. TextMeshPro hataları
+**Çözüm**: 
+- **Window → TextMeshPro → Import TMP Essential Resources**
+- Unity 6'da: Package Manager → TextMeshPro paketi yüklü mü kontrol et
+
+### 8. Prefab'lar mavi değil / bağlantı kopuk
+**Çözüm**: 
+- Prefab'ı Assets/'a sürükledikten sonra Hierarchy'deki obje **mavi** olmalı
+- Gri ise: Prefab bağlantısı kopmuş, tekrar sürükle
+
+### 9. "Scene could not be loaded" / Build Settings
+**Çözüm**:
+- **File → Build Settings**
+- 4 scene'i ekle: Bootstrap (index 0), MainMenu (1), Game (2), Results (3)
+- Scene sırası çok önemli!
+
+### 10. Unity 6'da Canvas Scaler farklı görünüyor
+**Çözüm**: Normal! Unity 6'da UI sistemi iyileştirildi ama parametreler aynı:
+- UI Scale Mode: `Scale With Screen Size`
+- Reference Resolution: `1080 x 1920`
+- Match: `0.5` veya `0` (ikisi de çalışır)
 
 ---
 
@@ -446,3 +556,29 @@ git push
 ```
 
 **Başarılar! En zor kısım (kodlama) bitti. Bu sadece Unity'de tıklamalar! 🎮**
+
+---
+
+## 📚 Unity 6 İçin Ek Notlar
+
+Eğer Unity 6 (6000.0.x) kullanıyorsan:
+
+### Yeni 2D Özellikler
+- **2D Sprite Shape**: Daha güzel engel tasarımı için kullanılabilir
+- **2D Pixel Perfect**: Retro görünüm istersen aktifleştir (Camera component)
+- **2D Animation**: Oyuncu koşu animasyonu eklemek için (opsiyonel)
+
+### Performans İyileştirmeleri
+- **Sprite Atlas**: Assets/Art/ klasöründe tüm sprite'ları topla, atlas oluştur
+  - **Assets → Create → 2D → Sprite Atlas**
+  - Tüm sprite'ları sürükle
+  - Build boyutu %30-40 azalır!
+
+### UI Toolkit (Yeni Sistem)
+- UI Toolkit kullanmak istersen: Daha modern ama öğrenme eğrisi var
+- Bu projede **uGUI (Canvas sistemi)** kullanıyoruz (daha yaygın, daha kolay)
+
+### Input System
+- Yeni Input System paketi Unity 6'da varsayılan
+- Kodumuz eski Input System kullanıyor (Input.GetMouseButtonDown)
+- Her ikisi de çalışır, **Active Input Handling: Both** seç
