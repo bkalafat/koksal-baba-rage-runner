@@ -6,7 +6,62 @@
 
 ---
 
-## 🚀 HIZLI BAŞLANGIÇ - İlk 30 Dakikada Oyunu Çalıştır
+## 🖥️ SİSTEM BİLGİLERİN
+
+- **Geliştirme**: Windows 10
+- **Test Cihazı**: iPhone 13 mini, iOS 18.0.1
+- **Hedef Platform**: iOS 14.0+ (iPhone 13 mini tam uyumlu ✅)
+- **Ekran Çözünürlüğü**: 2340x1080 (5.4" Super Retina XDR)
+
+---
+
+## ⚠️ ÖNEMLİ: iOS Build İçin Windows 10 Sınırlamaları
+
+### 🚫 Windows'tan Doğrudan iOS Build YAPILAMAZ
+Unity'de iOS için build **yapamazsın** çünkü:
+- iOS buildi için **Xcode** gerekli (sadece macOS'ta çalışır)
+- Apple'ın kod imzalama (code signing) macOS'a özel
+
+### ✅ Senin İçin 3 Çözüm:
+
+#### **Seçenek 1: Unity Remote (Hızlı Test) - ÖNERİLEN İLK ADIM** ⭐
+iPhone'unda oyunu anında test et (build yapmadan):
+
+1. **iPhone'una Unity Remote 5 indir** (App Store'dan ücretsiz)
+2. **Unity Editor'de**: Edit → Project Settings → Editor → Device: `Any iOS Device`
+3. **iPhone'u USB ile bilgisayara bağla**
+4. iPhone'da Unity Remote 5'i aç
+5. Unity'de **Play** bas → iPhone ekranında oyun görünür! (tap çalışır)
+
+**Artıları**: ✅ Saniyeler içinde test, ✅ Anında değişiklik görürsün  
+**Eksileri**: ⚠️ Performans tam değil, ⚠️ IAP/Haptics çalışmaz
+
+---
+
+#### **Seçenek 2: Unity Cloud Build** (Bulutta Mac kiralama)
+1. https://build.cloud.unity3d.com/ (ücretsiz plan var)
+2. GitHub repo'nu bağla
+3. iOS build konfigürasyonu oluştur
+4. .ipa dosyasını indir → TestFlight'a yükle
+
+---
+
+#### **Seçenek 3: Arkadaşının Mac'i** (En Pratik)
+- Projeyi GitHub'dan clone'lasın
+- Unity + Xcode yüklesin
+- Build → iOS → Xcode'da iPhone'una deploy et
+
+---
+
+### 🎯 Senin İçin Önerilen İş Akışı
+
+1. **Şimdi**: Unity Editor'de tüm scene/prefab'ları oluştur (3 saat) → Unity Remote ile iPhone'da test
+2. **MVP Tamam**: Unity Cloud Build veya arkadaşın Mac kullan
+3. **Yayına Hazır**: TestFlight → Beta test → App Store
+
+---
+
+##  HIZLI BAŞLANGIÇ - İlk 30 Dakikada Oyunu Çalıştır
 
 ### ☐ 1. Unity'de Projeyi Aç (5 dakika)
 
