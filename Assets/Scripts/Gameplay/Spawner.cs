@@ -77,16 +77,21 @@ namespace KoksalBaba.Gameplay
         private void SpawnObstacle(float elapsedTime)
         {
             // TODO: Select obstacle type using weighted random from spawnConfig
-            // TODO: Get instance from pool, set position (spawnXPosition, random Y in spawnYRange)
+            // TODO: Get instance from pool
             // TODO: Apply current difficulty speed to obstacle
-            Debug.Log($"Spawning obstacle at time {elapsedTime}");
+            
+            float randomY = Random.Range(spawnYRange.x, spawnYRange.y);
+            Vector3 spawnPosition = new Vector3(spawnXPosition, randomY, 0f);
+            Debug.Log($"Spawning obstacle at time {elapsedTime} at position {spawnPosition}");
         }
 
         private void SpawnPickup(string pickupType)
         {
             // TODO: Get pickup instance from pool (taunt or coin)
-            // TODO: Set position (spawnXPosition, random Y in spawnYRange)
-            Debug.Log($"Spawning {pickupType} pickup");
+            
+            float randomY = Random.Range(spawnYRange.x, spawnYRange.y);
+            Vector3 spawnPosition = new Vector3(spawnXPosition, randomY, 0f);
+            Debug.Log($"Spawning {pickupType} pickup at position {spawnPosition}");
         }
 
         private float GetSpawnPeriod(float elapsedTime)

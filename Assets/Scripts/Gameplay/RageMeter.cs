@@ -53,6 +53,11 @@ namespace KoksalBaba.Gameplay
             }
         }
 
+        public void AddTauntPickup()
+        {
+            AddRage(gainPerTaunt);
+        }
+
         public void ActivateDash()
         {
             if (!IsFull || _isDashActive) return;
@@ -63,7 +68,8 @@ namespace KoksalBaba.Gameplay
             OnDashActivated?.Invoke();
 
             // TODO: Log RageActivated analytics event
-            // TODO: Trigger PlayerController.StartDash(dashDurationSec, speedMultiplier)
+            // TODO: Trigger PlayerController.StartDash with duration and speed
+            Debug.Log($"Rage Dash activated! Duration: {dashDurationSec}s, Speed multiplier: {speedMultiplier}x");
 
             Invoke(nameof(EndDash), dashDurationSec);
         }
