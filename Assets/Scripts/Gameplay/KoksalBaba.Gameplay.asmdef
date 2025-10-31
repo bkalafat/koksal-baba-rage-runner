@@ -2,7 +2,8 @@
     "name": "KoksalBaba.Gameplay",
     "rootNamespace": "KoksalBaba.Gameplay",
     "references": [
-        "KoksalBaba.Core"
+        "KoksalBaba.Core",
+        "KoksalBaba.Data"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -41,7 +41,7 @@ namespace KoksalBaba.Gameplay
             // Clamp Y position
             if (transform.position.y > upperBoundY)
             {
-                _rb.velocity = new Vector2(_rb.velocity.x, 0);
+                _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, 0);
                 transform.position = new Vector3(transform.position.x, upperBoundY, transform.position.z);
             }
             else if (transform.position.y < lowerBoundY)
@@ -52,7 +52,7 @@ namespace KoksalBaba.Gameplay
 
         private void ApplyHopImpulse()
         {
-            _rb.velocity = new Vector2(forwardSpeed, jumpSpeed);
+            _rb.linearVelocity = new Vector2(forwardSpeed, jumpSpeed);
             // TODO: Play hop SFX and trigger light haptic
         }
 
@@ -108,7 +108,7 @@ namespace KoksalBaba.Gameplay
         public void Respawn(Vector3 position)
         {
             transform.position = position;
-            _rb.velocity = new Vector2(forwardSpeed, 0);
+            _rb.linearVelocity = new Vector2(forwardSpeed, 0);
             _isInvulnerable = true;
             Invoke(nameof(EndInvulnerability), 1.0f);
             // TODO: Enable flashing sprite effect
