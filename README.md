@@ -1,6 +1,6 @@
 # Köksal Baba: Rage Runner
 
-A hyper-casual 2D endless runner for iOS featuring the beloved Turkish personality Köksal Baba. Built with Unity 2022/2023 LTS.
+A hyper-casual 2D endless runner for iOS featuring the beloved Turkish personality Köksal Baba. Built with Unity 6.0 LTS (October 2024).
 
 ## Overview
 
@@ -43,7 +43,7 @@ Compliance/
 
 ### Development Setup
 
-1. **Install Unity**: 2022 LTS or 2023 LTS recommended
+1. **Install Unity**: 6.0.31f1 LTS (Unity 6) - see `UNITY_6_UPGRADE.md` for details
 2. **Install Visual Studio**: 2022 Community or 2026 Insider
 3. **Open Project**: Open this folder in Unity Hub
 4. **Configure iOS**: File → Build Settings → iOS → Switch Platform

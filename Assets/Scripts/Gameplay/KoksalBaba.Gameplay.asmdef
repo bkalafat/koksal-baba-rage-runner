@@ -1,0 +1,16 @@
+{
+    "name": "KoksalBaba.Gameplay",
+    "rootNamespace": "KoksalBaba.Gameplay",
+    "references": [
+        "KoksalBaba.Core"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -12,7 +12,7 @@
 - **Test Cihazı**: iPhone 13 mini, iOS 18.0.1 (Ekim 2024)
 - **Hedef Platform**: iOS 14.0+ (iPhone 13 mini tam uyumlu ✅)
 - **Ekran Çözünürlüğü**: 2340x1080 (5.4" Super Retina XDR)
-- **Not**: iOS'ta major versiyon maksimum 18'dir (2024), 26 değil!
+- **Not**: iOS 18.0.1 aktif en son sürüm (Ekim 2024). iPhone 13 mini tam destekleniyor!
 
 ---
 
@@ -68,7 +68,7 @@ iPhone'unda oyunu anında test et (build yapmadan):
 
 1. **Unity Hub**'ı aç
 2. **"Add"** → Klasörü seç: `C:\dev\koksal`
-3. Unity versiyonu: **Unity 6 (6000.0.x)** veya **2022.3/2023.3 LTS** (yoksa indir)
+3. Unity versiyonu: **Unity 6.0.31f1 LTS** (Unity 6 - Ekim 2024 Stable) (yoksa indir - `UNITY_6_UPGRADE.md`'ye bak)
    - Unity 6 tercih edilir (en yeni 2D özellikler)
 4. Projeye tıkla, Unity Editor açılsın
 5. İlk import bekle (~2-3 dakika)
@@ -617,7 +617,7 @@ git push
 
 ## 📚 Unity 6 İçin Ek Notlar
 
-Eğer Unity 6 (6000.0.x) kullanıyorsan:
+Eğer Unity 6.0.31f1 LTS kullanıyorsan (önerilen):
 
 ### Yeni 2D Özellikler
 - **2D Sprite Shape**: Daha güzel engel tasarımı için kullanılabilir
