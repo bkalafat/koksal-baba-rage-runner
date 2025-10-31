@@ -9,9 +9,10 @@
 ## 🖥️ SİSTEM BİLGİLERİN
 
 - **Geliştirme**: Windows 10
-- **Test Cihazı**: iPhone 13 mini, iOS 18.0.1
+- **Test Cihazı**: iPhone 13 mini, iOS 18.0.1 (Ekim 2024)
 - **Hedef Platform**: iOS 14.0+ (iPhone 13 mini tam uyumlu ✅)
 - **Ekran Çözünürlüğü**: 2340x1080 (5.4" Super Retina XDR)
+- **Not**: iOS'ta major versiyon maksimum 18'dir (2024), 26 değil!
 
 ---
 
