@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections.Generic;
+using RageRunner.Data;
 
 namespace RageRunner.Gameplay
 {

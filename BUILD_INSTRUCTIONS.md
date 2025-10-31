@@ -1,11 +1,10 @@
 # Build Instructions for iOS
 
 ## Prerequisites
-- Unity 6.0.31f1 LTS (Unity 6 - October 2024)
-- Xcode 15.0 or later (Unity 6 requirement)
+- Unity 6000.2.8f1 (Unity 6)
+- Xcode 14.0 or later
 - iOS 14.0+ deployment target
 - Valid Apple Developer account
-- See `UNITY_6_UPGRADE.md` for upgrade guide
 
 ## Unity Build Settings
 1. Open Unity Build Settings (File → Build Settings)

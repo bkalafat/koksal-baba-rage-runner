@@ -68,7 +68,7 @@ iPhone'unda oyunu anında test et (build yapmadan):
 
 1. **Unity Hub**'ı aç
 2. **"Add"** → Klasörü seç: `C:\dev\koksal`
-3. Unity versiyonu: **Unity 6.0.31f1 LTS** (Unity 6 - Ekim 2024 Stable) (yoksa indir - `UNITY_6_UPGRADE.md`'ye bak)
+3. Unity versiyonu: **Unity 6000.2.8f1** (Unity 6) (yoksa indir)
    - Unity 6 tercih edilir (en yeni 2D özellikler)
 4. Projeye tıkla, Unity Editor açılsın
 5. İlk import bekle (~2-3 dakika)
@@ -617,7 +617,7 @@ git push
 
 ## 📚 Unity 6 İçin Ek Notlar
 
-Eğer Unity 6.0.31f1 LTS kullanıyorsan (önerilen):
+Eğer Unity 6000.2.8f1 kullanıyorsan:
 
 ### Yeni 2D Özellikler
 - **2D Sprite Shape**: Daha güzel engel tasarımı için kullanılabilir
