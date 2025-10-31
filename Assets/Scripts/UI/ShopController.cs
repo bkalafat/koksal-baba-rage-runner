@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using KoksalBaba.Services;
 
 namespace KoksalBaba.UI
 {
@@ -91,7 +92,7 @@ namespace KoksalBaba.UI
         private void OnRemoveAdsClicked()
         {
             // TODO: Trigger IAPService.BuyProduct("remove_ads")
-            var iapService = Core.ServiceLocator.Instance.Get<Core.IIAPService>();
+            var iapService = Core.ServiceLocator.Instance.Get<IIAPService>();
             if (iapService != null)
             {
                 Debug.Log("Purchase Remove Ads initiated");
@@ -102,7 +103,7 @@ namespace KoksalBaba.UI
         private void OnStarterPackClicked()
         {
             // TODO: Trigger IAPService.BuyProduct("starter_pack")
-            var iapService = Core.ServiceLocator.Instance.Get<Core.IIAPService>();
+            var iapService = Core.ServiceLocator.Instance.Get<IIAPService>();
             if (iapService != null)
             {
                 Debug.Log("Purchase Starter Pack initiated");

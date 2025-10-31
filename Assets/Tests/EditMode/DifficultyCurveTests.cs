@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
-using KoksalBaba.Scripts.Data;
+using KoksalBaba.Data;
 
 namespace KoksalBaba.Tests.EditMode
 {
