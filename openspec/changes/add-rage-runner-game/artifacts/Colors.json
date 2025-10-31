@@ -1,0 +1,27 @@
+{
+  "palette": {
+    "primary": "#FF5733",
+    "secondary": "#33C3FF",
+    "background": "#F0F0F0",
+    "obstacle": "#808080",
+    "pickup": "#FFD700",
+    "player": "#FF6347",
+    "ui_text": "#2C3E50",
+    "ui_button": "#3498DB",
+    "rage_bar": "#E74C3C",
+    "score_bonus": "#2ECC71"
+  },
+  "biomes": {
+    "street": {
+      "background": "#A9A9A9",
+      "accent": "#696969",
+      "obstacle_tint": "#5A5A5A"
+    },
+    "boardwalk": {
+      "background": "#87CEEB",
+      "accent": "#FFD700",
+      "obstacle_tint": "#DEB887"
+    }
+  },
+  "usage": "Apply these colors to placeholder sprites via SpriteRenderer.color or UI Image.color. Final art assets will replace placeholders but should respect this palette for consistency."
+}

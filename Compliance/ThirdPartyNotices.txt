@@ -1,0 +1,99 @@
+# Third-Party Notices
+
+This document lists third-party software and services used in Köksal Baba: Rage Runner, along with their licenses and data usage practices.
+
+---
+
+## Unity Engine
+**Version:** 2022 LTS or 2023 LTS  
+**License:** Unity Software Additional Terms  
+**Website:** https://unity.com  
+**Data Usage:** Unity Analytics (if enabled) collects anonymous gameplay statistics. See Unity Privacy Policy: https://unity3d.com/legal/privacy-policy
+
+---
+
+## Unity In-App Purchasing (IAP)
+**Version:** Latest (via Package Manager)  
+**License:** Unity Companion License  
+**Website:** https://unity.com/products/iap  
+**Data Usage:** Processes purchase transactions via Apple App Store. No PII collected by Unity IAP; purchase data handled by Apple.
+
+---
+
+## Unity LevelPlay (IronSource Ads Mediation)
+**Version:** Latest SDK  
+**License:** IronSource SDK License Agreement  
+**Website:** https://developers.is.com/ironsource-mobile/  
+**Data Usage:** Collects anonymous advertising ID (IDFA on iOS, if user grants ATT permission) for ad serving and analytics. See IronSource Privacy Policy: https://developers.is.com/ironsource-mobile/air/ironsource-mobile-privacy-policy/
+
+**OR**
+
+## Google AdMob
+**Version:** Latest SDK  
+**License:** Google APIs Terms of Service  
+**Website:** https://admob.google.com  
+**Data Usage:** Collects anonymous advertising ID (IDFA on iOS, if user grants ATT permission) for ad serving. See AdMob Privacy Policy: https://support.google.com/admob/answer/6128543
+
+---
+
+## Firebase Analytics (Google)
+**Version:** Latest SDK  
+**License:** Firebase Terms of Service  
+**Website:** https://firebase.google.com/products/analytics  
+**Data Usage:** Collects anonymous gameplay events (app opens, scores, in-game actions) if user has analytics consent enabled. Data retained for 90 days. See Firebase Privacy Policy: https://policies.google.com/privacy
+
+**OR**
+
+## Unity Analytics
+**Version:** Latest (via Package Manager)  
+**License:** Unity Analytics Terms  
+**Website:** https://unity.com/products/unity-analytics  
+**Data Usage:** Collects anonymous gameplay events if user has analytics consent enabled. Data retained for 90 days. See Unity Privacy Policy: https://unity3d.com/legal/privacy-policy
+
+---
+
+## TextMeshPro (Unity)
+**Version:** Bundled with Unity  
+**License:** Unity Companion License  
+**Website:** https://docs.unity3d.com/Manual/com.unity.textmeshpro.html  
+**Data Usage:** None (UI rendering only)
+
+---
+
+## App Tracking Transparency (ATT) Framework (Apple)
+**Platform:** iOS 14+  
+**License:** Apple Developer Agreement  
+**Website:** https://developer.apple.com/documentation/apptrackingtransparency  
+**Data Usage:** Prompts user for permission to track across apps. Required if ad network uses IDFA for personalized ads.
+
+---
+
+## Open Source Licenses
+
+### Unity.Addressables (if used)
+**License:** Unity Companion License  
+
+### Unity.Collections (if used)
+**License:** Unity Companion License  
+
+---
+
+## Developer Responsibility
+
+By using these third-party services, the developer agrees to:
+1. Comply with all third-party licenses and terms of service
+2. Disclose data collection practices in Privacy Manifest (iOS) and Privacy Policy
+3. Obtain user consent for analytics and ad tracking where required by law
+4. Keep SDKs updated to latest versions for security and compliance
+
+---
+
+## Contact for Questions
+
+For questions about third-party notices, contact:
+- Developer: [Your Company Name]
+- Email: [support email]
+
+---
+
+**Last Updated:** [Date]

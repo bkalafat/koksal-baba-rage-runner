@@ -1,0 +1,30 @@
+{
+  "palette": {
+    "primary": "#FF5733",
+    "secondary": "#33C3FF",
+    "background": "#F0F0F0",
+    "obstacle": "#808080",
+    "pickup": "#FFD700",
+    "player": "#FF6347"
+  },
+  "biomes": {
+    "street": {
+      "background": "#5A5A5A",
+      "accent1": "#A0A0A0",
+      "accent2": "#707070"
+    },
+    "boardwalk": {
+      "background": "#87CEEB",
+      "accent1": "#FFD700",
+      "accent2": "#F4A460"
+    }
+  },
+  "ui": {
+    "button_primary": "#FF5733",
+    "button_secondary": "#33C3FF",
+    "text_primary": "#FFFFFF",
+    "text_secondary": "#000000",
+    "rage_bar": "#FF0000",
+    "rage_bar_background": "#4D0000"
+  }
+}
