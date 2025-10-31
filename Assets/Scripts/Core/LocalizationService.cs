@@ -7,7 +7,7 @@ namespace KoksalBaba.Core
     /// Localization service for managing string translations.
     /// Loads from CSV file with format: Key,tr-TR,en-US
     /// </summary>
-    public class LocalizationService
+    public class LocalizationService : MonoBehaviour
     {
         private Dictionary<string, Dictionary<string, string>> _strings = new Dictionary<string, Dictionary<string, string>>();
         private string _currentLanguage = "en-US";

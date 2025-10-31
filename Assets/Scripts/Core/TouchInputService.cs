@@ -7,7 +7,7 @@ namespace KoksalBaba.Core
     /// Concrete implementation of IInputService for touch/mouse input.
     /// Supports both mobile touch and mouse clicks for editor testing.
     /// </summary>
-    public class TouchInputService : IInputService
+    public class TouchInputService : MonoBehaviour, IInputService
     {
         public event Action OnTap;
 

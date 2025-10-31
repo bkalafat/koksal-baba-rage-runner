@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using KoksalBaba.Services;
 
 namespace KoksalBaba.Core
 {
@@ -59,7 +60,33 @@ namespace KoksalBaba.Core
         private void InitializeServices()
         {
             // Service initialization order: Time → Input → Analytics → Ads → IAP
-            // TODO: Register services with ServiceLocator
+            Debug.Log("Initializing services...");
+            // Core services
+            var timeService = new TimeService();
+            ServiceLocator.Instance.Register<ITimeService>(timeService);
+
+            var inputService = gameObject.AddComponent<TouchInputService>();
+            inputService.Initialize();
+            ServiceLocator.Instance.Register<IInputService>(inputService);
+
+            var audioService = gameObject.AddComponent<AudioService>();
+            audioService.Initialize();
+            ServiceLocator.Instance.Register<IAudioService>(audioService);
+
+            var hapticService = new HapticService();
+            hapticService.Initialize();
+            ServiceLocator.Instance.Register<IHapticService>(hapticService);
+
+            var localizationService = gameObject.AddComponent<LocalizationService>();
+            localizationService.Initialize();
+            ServiceLocator.Instance.Register<LocalizationService>(localizationService);
+
+            // Stub implementations for monetization/analytics (implement later)
+            ServiceLocator.Instance.Register<IAnalyticsService>(new StubAnalyticsService());
+            ServiceLocator.Instance.Register<IAdService>(new StubAdService());
+            ServiceLocator.Instance.Register<IIAPService>(new StubIAPService());
+
+            Debug.Log("All services initialized and registered.");
         }
 
         public void TransitionTo(GameState newState)
@@ -81,19 +108,25 @@ namespace KoksalBaba.Core
             switch (state)
             {
                 case GameState.MainMenu:
-                    // TODO: Load MainMenu scene additively
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
                     break;
                 case GameState.Playing:
-                    // TODO: Load Game scene, start spawner
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
                     break;
                 case GameState.Paused:
-                    // TODO: Set Time.timeScale = 0, show pause overlay
+                    Time.timeScale = 0f;
+                    // Show pause overlay (handled by PauseMenuController in scene)
                     break;
                 case GameState.GameOver:
-                    // TODO: Stop spawner, show interstitial ad (if eligible)
+                    Time.timeScale = 1f;
+                    // Show interstitial ad if eligible (handled by ad service)
+                    if (!_removeAdsPurchased)
+                    {
+                        ServiceLocator.Instance.Get<IAdService>()?.ShowInterstitial(null, null);
+                    }
                     break;
                 case GameState.Results:
-                    // TODO: Display results screen with final score
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("Results");
                     break;
             }
         }
@@ -131,7 +164,17 @@ namespace KoksalBaba.Core
 
         private void OnApplicationQuit()
         {
-            // TODO: Log AppClose analytics event with session duration
+            var analyticsService = ServiceLocator.Instance.Get<IAnalyticsService>();
+            if (analyticsService != null)
+            {
+                var sessionData = new Dictionary<string, object>
+                {
+                    { "session_duration", Time.realtimeSinceStartup },
+                    { "best_score", _bestScore },
+                    { "total_coins", _totalCoins }
+                };
+                analyticsService.LogEvent("AppClose", sessionData);
+            }
         }
     }
 }

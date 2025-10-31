@@ -1,0 +1,8 @@
+{
+  "name": "Default Spawn Config",
+  "obstacleWeights": [
+    { "prefabName": "StaticPole", "weight": 1.0 },
+    { "prefabName": "MovingBarrier", "weight": 0.7 },
+    { "prefabName": "BreakableCrate", "weight": 0.5 }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Bootstrap",
+  "difficulty": 0.5,
+  "minimumInitialSpawnPeriod": 1.25,
+  "startSpeedMultiplier": 1.0,
+  "endSpeedMultiplier": 2.5,
+  "difficultyRampSeconds": 120.0,
+  "points": [
+    { "time": 0.0, "spawnPeriod": 1.25 },
+    { "time": 30.0, "spawnPeriod": 1.0 },
+    { "time": 60.0, "spawnPeriod": 0.85 },
+    { "time": 90.0, "spawnPeriod": 0.75 },
+    { "time": 120.0, "spawnPeriod": 0.65 }
+  ]
+}

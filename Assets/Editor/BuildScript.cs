@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEditor.Build.Reporting;
 using UnityEngine;
 using System;
 
@@ -43,7 +44,7 @@ namespace KoksalBaba.Editor
             PlayerSettings.iOS.targetOSVersionString = "14.0";
             PlayerSettings.iOS.sdkVersion = iOSSdkVersion.DeviceSDK;
             PlayerSettings.iOS.targetDevice = iOSTargetDevice.iPhoneOnly;
-            PlayerSettings.SetScriptingBackend(BuildTargetGroup.iOS, ScriptingImplementation.IL2CPP);
+            PlayerSettings.SetScriptingBackend(UnityEditor.Build.NamedBuildTarget.iOS, ScriptingImplementation.IL2CPP);
             PlayerSettings.iOS.buildNumber = DateTime.Now.ToString("yyyyMMddHHmm");
 
             // Configure quality settings
@@ -93,7 +94,7 @@ namespace KoksalBaba.Editor
             // Configure Android build settings
             PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel24;
             PlayerSettings.Android.targetSdkVersion = AndroidSdkVersions.AndroidApiLevel33;
-            PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
+            PlayerSettings.SetScriptingBackend(UnityEditor.Build.NamedBuildTarget.Android, ScriptingImplementation.IL2CPP);
             PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
 
             // Build

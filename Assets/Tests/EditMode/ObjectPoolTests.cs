@@ -13,11 +13,12 @@ namespace KoksalBaba.Tests.EditMode
         public void ObjectPoolPrewarmCreatesInstances()
         {
             // Arrange
-            var prefab = new GameObject("TestPrefab");
-            var pool = new ObjectPool<GameObject>(prefab, 5);
+            var prefabObj = new GameObject("TestPrefab");
+            var prefab = prefabObj.AddComponent<Transform>();
+            var pool = new ObjectPool<Transform>(prefab, 5);
 
             // Act
-            pool.Prewarm();
+            // Prewarm is called in constructor
 
             // Assert
             var obj1 = pool.Get();
@@ -27,27 +28,27 @@ namespace KoksalBaba.Tests.EditMode
             Assert.AreNotSame(obj1, obj2, "Pool should return different instances");
 
             // Cleanup
-            Object.DestroyImmediate(prefab);
+            Object.DestroyImmediate(prefabObj);
         }
 
         [Test]
         public void ObjectPoolReturnDeactivatesObject()
         {
             // Arrange
-            var prefab = new GameObject("TestPrefab");
-            var pool = new ObjectPool<GameObject>(prefab, 1);
-            pool.Prewarm();
+            var prefabObj = new GameObject("TestPrefab");
+            var prefab = prefabObj.AddComponent<Transform>();
+            var pool = new ObjectPool<Transform>(prefab, 1);
 
             // Act
             var obj = pool.Get();
-            Assert.IsTrue(obj.activeInHierarchy, "Retrieved object should be active");
+            Assert.IsTrue(obj.gameObject.activeInHierarchy, "Retrieved object should be active");
             pool.Return(obj);
 
             // Assert
-            Assert.IsFalse(obj.activeInHierarchy, "Returned object should be deactivated");
+            Assert.IsFalse(obj.gameObject.activeInHierarchy, "Returned object should be deactivated");
 
             // Cleanup
-            Object.DestroyImmediate(prefab);
+            Object.DestroyImmediate(prefabObj);
         }
     }
 }

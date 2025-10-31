@@ -1,0 +1,9 @@
+{
+  "name": "Default Theme",
+  "skyColor": "#87CEEB",
+  "groundColor": "#8B7355",
+  "playerColor": "#FF6347",
+  "obstacleColor": "#696969",
+  "tauntColor": "#FFD700",
+  "coinColor": "#FFA500"
+}
